@@ -1,0 +1,39 @@
+{
+  "status": true,
+  "message": "OK",
+  "datetime": "2023-09-06 16:28:17 -0300 (America\/Fortaleza)",
+  "data": [
+    {
+      "id": "4259",
+      "data": "2023-08-04",
+      "id_paciente": "1484",
+      "total": "50.00",
+      "saldo": "0.00000",
+      "status": "1",
+      "id_caixa": "0",
+      "desconto": "30.00000",
+      "pre_pago": "0",
+      "data_liberacao": null,
+      "liberada": "0",
+      "taxa_cartao": "0.00000",
+      "taxas": "0.00000",
+      "codigo": "4259",
+      "observacoes": "",
+      "nota_fiscal": null,
+      "paciente_nome": "D\u00e9bora",
+      "telefone": "32465553952",
+      "servicos": "Ext | Volume Eg\u00edpcio | Aplica\u00e7\u00e3o",
+      "pagamento_detalhes": {
+        "14722": {
+          "data": "2023-08-04",
+          "vencimento": "2023-08-04",
+          "valor": "50.00",
+          "descricao": "Dinheiro"
+        }
+      }
+    }
+  ],
+  "draw": 3,
+  "total": 351,
+  "debug": "\nSELECT DISTINCT c.*, p.nome as paciente_nome, p.telefone, (SELECT TRIM(GROUP_CONCAT(\" \", t2.descricao)) FROM `transacao` t2 WHERE t2.id_servico > 0 AND t2.tipo = 0 AND t2.id_comanda = c.id) AS servicos FROM `comanda` c INNER JOIN `transacao` t ON t.id_comanda = c.id LEFT JOIN `#__paciente` p ON p.id = c.id_paciente  WHERE c.status LIKE '%'  AND (t.data between '2023-08-01' AND '2023-08-31') ORDER BY c.status ASC, c.id DESC"
+}
